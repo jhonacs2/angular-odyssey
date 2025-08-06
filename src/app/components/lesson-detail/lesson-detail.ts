@@ -1,62 +1,54 @@
-
-import { ChangeDetectionStrategy, Component, effect, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LessonService } from '../../services/lesson';
-import EditorJS, { OutputData } from '@editorjs/editorjs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import {ChangeDetectionStrategy, Component, effect, inject} from '@angular/core';
+import {LessonService} from '../../services/lesson';
+import EditorJS, {OutputData} from '@editorjs/editorjs';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  selector: 'app-lesson-detail',
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatCardModule],
+  selector: 'aod-lesson-detail',
+  imports: [MatButtonModule, MatCardModule],
   templateUrl: './lesson-detail.html',
   styleUrl: './lesson-detail.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LessonDetailComponent implements OnInit, OnDestroy {
-  readonly lessonService = inject(LessonService);
-  private editor: EditorJS | undefined;
+export class LessonDetailComponent {
+  #lessonService = inject(LessonService);
+  #editor: EditorJS | undefined;
 
-  constructor() {
-    effect(() => {
-      const lesson = this.lessonService.currentLesson();
-      if (lesson) {
-        this.initializeEditor(lesson.content);
-      } else {
-        this.destroyEditor();
-      }
-    });
+  lesson = this.#lessonService.currentLesson;
+
+  #lessonEffect = effect((onCleanup) => {
+    if (this.lesson()) {
+      this.#initializeEditor(this.lesson()!.content);
+    } else {
+      this.#destroyEditor();
+    }
+
+    onCleanup(() => this.#destroyEditor())
+  });
+
+  readonly EDITOR_CONTAINER_ID = "angularEditorJs";
+
+  markAsCompleted() {
+    const currentLesson = this.#lessonService.currentLesson();
+    if (currentLesson) {
+      this.#lessonService.completeLesson(currentLesson);
+    }
   }
 
-  ngOnInit() {
-    // No longer needed as effect handles initialization
-  }
-
-  ngOnDestroy() {
-    this.destroyEditor();
-  }
-
-  private initializeEditor(content: OutputData) {
-    this.destroyEditor(); // Ensure no multiple instances
-    this.editor = new EditorJS({
-      holder: 'editorjs',
+  #initializeEditor(content: OutputData) {
+    this.#destroyEditor();
+    this.#editor = new EditorJS({
+      holder: this.EDITOR_CONTAINER_ID,
       readOnly: true,
       data: content,
     });
   }
 
-  private destroyEditor() {
-    if (this.editor) {
-      this.editor.destroy();
-      this.editor = undefined;
-    }
-  }
-
-  markAsCompleted() {
-    const currentLesson = this.lessonService.currentLesson();
-    if (currentLesson) {
-      this.lessonService.completeLesson(currentLesson);
+  #destroyEditor() {
+    if (this.#editor) {
+      this.#editor.destroy();
+      this.#editor = undefined;
     }
   }
 }

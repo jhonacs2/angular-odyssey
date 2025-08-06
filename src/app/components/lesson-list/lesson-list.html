@@ -1,5 +1,5 @@
 <mat-nav-list>
-  @for (lesson of lessonService.lessons(); track lesson.id) {
+  @for (lesson of lessons(); track lesson.id) {
     <mat-list-item (click)="selectLesson(lesson.id)">
       <mat-icon matListItemIcon>
         @if (lesson.completed) {

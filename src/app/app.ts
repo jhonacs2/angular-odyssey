@@ -1,12 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LessonListComponent } from './components/lesson-list/lesson-list';
-import { LessonDetailComponent } from './components/lesson-detail/lesson-detail';
-import { LessonService } from './services/lesson';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import {Component, inject, OnInit} from '@angular/core';
+import {LessonListComponent} from './components/lesson-list/lesson-list';
+import {LessonDetailComponent} from './components/lesson-detail/lesson-detail';
+import {LessonService} from './services/lesson';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
