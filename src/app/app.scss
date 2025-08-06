@@ -1,0 +1,24 @@
+
+.sidenav-container {
+  height: calc(100vh - 64px); /* Adjust based on toolbar height */
+}
+
+.sidenav {
+  width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidenav-content {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.progress-text {
+  margin-left: 16px;
+  font-weight: bold;
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "lesson-1",
+    "title": "Introduction to Angular",
+    "content": {
+      "time": 1712345678900,
+      "blocks": [
+        {
+          "id": "a1b2c3",
+          "type": "paragraph",
+          "data": {
+            "text": "Welcome to Angular 20! This is the first lesson."
+          }
+        }
+      ],
+      "version": "2.29.1"
+    },
+    "completed": false
+  },
+  {
+    "id": "lesson-2",
+    "title": "Components and Signals",
+    "content": {
+      "time": 1712345678901,
+      "blocks": [
+        {
+          "id": "d4e5f6",
+          "type": "paragraph",
+          "data": {
+            "text": "Learn about standalone components and signals for state management."
+          }
+        }
+      ],
+      "version": "2.29.1"
+    },
+    "completed": false
+  },
+  {
+    "id": "lesson-3",
+    "title": "Angular Material and Editor.js",
+    "content": {
+      "time": 1712345678902,
+      "blocks": [
+        {
+          "id": "g7h8i9",
+          "type": "paragraph",
+          "data": {
+            "text": "Integrate Angular Material and Editor.js into your application."
+          }
+        }
+      ],
+      "version": "2.29.1"
+    },
+    "completed": false
+  }
+]

@@ -1,0 +1,21 @@
+<mat-card>
+  @if (lessonService.currentLesson(); as lesson) {
+    <mat-card-header>
+      <mat-card-title>{{ lesson.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div id="editorjs"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      @if (!lesson.completed) {
+        <button mat-raised-button color="primary" (click)="markAsCompleted()">
+          Mark as Completed
+        </button>
+      }
+    </mat-card-actions>
+  } @else {
+    <mat-card-content>
+      <p>Select a lesson to view its content.</p>
+    </mat-card-content>
+  }
+</mat-card>

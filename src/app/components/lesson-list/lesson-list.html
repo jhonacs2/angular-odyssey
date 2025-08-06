@@ -1,0 +1,14 @@
+<mat-nav-list>
+  @for (lesson of lessonService.lessons(); track lesson.id) {
+    <mat-list-item (click)="selectLesson(lesson.id)">
+      <mat-icon matListItemIcon>
+        @if (lesson.completed) {
+          check_circle
+        } @else {
+          lock
+        }
+      </mat-icon>
+      <div matListItemTitle>{{ lesson.title }}</div>
+    </mat-list-item>
+  }
+</mat-nav-list>

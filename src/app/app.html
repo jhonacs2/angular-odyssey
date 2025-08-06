@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <span>Angular Odyssey Workshop</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="resetProgress()">
+    <mat-icon>refresh</mat-icon>
+    Reset Progress
+  </button>
+  <span class="progress-text">{{ lessonService.completed() }} / {{ lessonService.total() }} completed</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <app-lesson-list></app-lesson-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <app-lesson-detail></app-lesson-detail>
+  </mat-sidenav-content>
+</mat-sidenav-container>
